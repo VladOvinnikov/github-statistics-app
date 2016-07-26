@@ -1,0 +1,18 @@
+{
+  "name": "github-statistics",
+  "description": "App to get statistics for github repositories",
+  "version": "1.0.0",
+  "author": [
+    "Vlad Ovinnikov"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-mocks": "^1.5.8",
+    "angular-ui-router": "^0.3.1",
+    "bootstrap-sass": "^3.3.7",
+    "underscore": "^1.8.3",
+    "angular-underscore-module": "^1.0.3"
+  }
+}

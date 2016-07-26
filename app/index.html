@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="en" ng-app="githubStatisticsApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" ng-app="githubStatisticsApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" ng-app="githubStatisticsApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="githubStatisticsApp" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Github-statistics App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/styles.min.css">
+</head>
+<body>
+<header>
+    <span id="header_title">Github-statistics</span>
+</header>
+<div ui-view=""></div>
+<footer>
+    <span>2016 Github-statistics v.1</span>
+</footer>
+<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="bower_components/underscore/underscore-min.js"></script>
+
+<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-underscore-module/angular-underscore-module.js"></script>
+<script src="app.js"></script>
+<script type="text/javascript" src="config/configRoute.config.js"></script>
+<script type="text/javascript" src="config/module.config.js"></script>
+<script type="text/javascript" src="config/constant.config.js"></script>
+
+<script type="text/javascript" src="controllers/controllers.js"></script>
+<script type="text/javascript" src="controllers/main.controller.js"></script>
+
+<script type="text/javascript" src="services/services.js"></script>
+<script type="text/javascript" src="services/repo.service.js"></script>
+
+</body>
+</html>

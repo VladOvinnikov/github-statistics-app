@@ -1,0 +1,48 @@
+// bootstrap styles
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "variable";
+
+header {
+  position: relative;
+  height: 60px;
+  background-color: lighten($header-color, 60%);
+  & #header_title {
+    position: absolute;
+    top: 17px;
+    left: 20px;
+    font-size: 1.3em;
+    font-style: italic;
+    font-weight: 700;
+  }
+}
+
+footer {
+  position: relative;
+  bottom: 0;
+  height: 50px;
+  color: $light-color;
+  background-color: $dark-color;
+  & span {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+  }
+}
+
+table {
+  & thead {
+    & tr {
+      & th {
+        text-align: center;
+        cursor: pointer;
+      }
+    }
+  }
+  & tr {
+    & td {
+      &.centered {
+        text-align: center;
+      }
+    }
+  }
+}
