@@ -7,12 +7,10 @@
     angular.module('githubStatisticsApp.repo.service', [])
         .service('RepoService', RepoService);
 
-    RepoService.$inject = ['$q', '$http', '$log', 'REST_URL'];
+    RepoService.$inject = ['$http', '$log', 'REST_URL'];
 
-    function RepoService($q, $http, $log, REST_URL) {
+    function RepoService($http, $log, REST_URL) {
         $log.info('RepoService loaded!');
-
-        var deferred = $q.defer();
 
         return {
             getRepositories: getRepositories,
