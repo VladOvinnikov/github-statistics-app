@@ -15,17 +15,20 @@
         init();
 
         function init() {
+            $scope.companyName = 'x-formation';
             $scope.repositories = null;
             $scope.order = '-forks';
 
-            RepoService.getRepositories()
+            RepoService.getRepositories($scope.companyName)
                 .then(function (data) {
-                    console.log(data);
+
                     $scope.repositories = data;
                 }, function (error) {
+
                     $log.error(error);
                 }
             )
+
         }
     }
 

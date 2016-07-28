@@ -1,26 +1,31 @@
-<h3>This is contribution page</h3>
-<a href="javascript:;"
-   ui-sref="home">
-    <span class="glyphicon glyphicon-menu-left"></span>
-    Return
-</a>
-<table class="table table-bordered table-striped table-hover">
-    <thead>
-    <tr>
-        <th>Login</th>
-        <th>
+<div class="container">
+    <h3>This is contribution page</h3>
+    <h4>Company: <cite>"{{companyName}}"</cite></h4>
+    <h4>Repository: <cite>"{{repoName}}"</cite></h4>
+
+    <a id="homeLink" href="javascript:;"
+       ui-sref="home">
+        <span class="glyphicon glyphicon-menu-left"></span>
+        Return
+    </a>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Login</th>
+            <th>
             <span>Contributions
                 <span class="glyphicon glyphicon-menu-up up"
                       ng-click="order = '-contributions'"></span>
                 <span class="glyphicon glyphicon-menu-down down"
                       ng-click="order = 'contributions'"></span>
             </span>
-        </th>
-    </tr>
-    </thead>
+            </th>
+        </tr>
+        </thead>
 
-    <tr ng-repeat="contributor in contributors | orderBy: order">
-        <td>{{contributor.login}}</td>
-        <td class="centered">{{contributor.contributions}}</td>
-    </tr>
-</table>
+        <tr ng-repeat="contributor in contributors | orderBy: order">
+            <td>{{contributor.login}}</td>
+            <td class="centered">{{contributor.contributions}}</td>
+        </tr>
+    </table>
+</div>

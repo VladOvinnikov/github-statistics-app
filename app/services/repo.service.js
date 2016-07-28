@@ -18,14 +18,21 @@
         };
 
         function getRepositories(companyName) {
-            return $http.get(REST_URL + '/orgs/x-formation/repos')
+            return $http.get(REST_URL + '/orgs/' + companyName + '/repos')
                 .then(function (res) {
 
-                    return addContributionsToRepo(res.data, companyName);
+                    var array = res.data;
+                    return _.each(array, function (repo) {
 
-                }, function (error) {
+                        getContributors(repo.name, companyName)
+                            .then(function (data) {
 
-                    return error.data;
+                                repo.contribution = data;
+
+                            }
+                        );
+
+                    });
                 })
                 .finally(function () {
                     $log.info('Request getRepositories finished at:', new Date())
@@ -33,39 +40,16 @@
             );
         }
 
-        function getContributors(name) {
-            return $http.get(REST_URL + '/repos/x-formation/' + name + '/contributors')
+        function getContributors(repoName, companyName) {
+            return $http.get(REST_URL + '/repos/' + companyName + '/' + repoName + '/contributors')
                 .then(function (res) {
 
                     return res.data;
-                }, function (error) {
-
-                    return error.data;
                 })
                 .finally(function () {
                     $log.info('Request getContributors finished at:', new Date())
                 }
             );
-        }
-
-        function addContributionsToRepo(array) {
-
-            _.each(array, function (repo) {
-
-                getContributors(repo.name)
-                    .then(function (data) {
-
-                        repo.contribution = data;
-
-                    }, function (error) {
-
-                        return error.data;
-                    }
-                );
-
-            });
-
-            return array;
         }
     }
 

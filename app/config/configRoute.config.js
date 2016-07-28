@@ -20,7 +20,7 @@
             })
             // Contribution detail page
             .state('contribution', {
-                url: '/contribution/:name',
+                url: '/contribution/:org/:repo',
                 templateUrl: '../views/contribution.html',
                 controller: 'ContributionCtrl'
             })

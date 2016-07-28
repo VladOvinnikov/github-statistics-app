@@ -15,10 +15,10 @@
 
         describe('RepoService - ', function () {
 
-            var log, http, httpBackend, REST_URL, RepoService, q, deferred;
+            var log, http, httpBackend, REST_URL, RepoService, q, deferred, rootScope, scope, companyName, repos;
 
             beforeEach(inject(
-                function (_$log_, _$http_, _$httpBackend_, _REST_URL_, _RepoService_, _$q_) {
+                function (_$log_, _$http_, _$httpBackend_, _REST_URL_, _RepoService_, _$q_, _$rootScope_) {
 
                     log = _$log_;
                     http = _$http_;
@@ -27,14 +27,19 @@
                     RepoService = _RepoService_;
                     q = _$q_;
                     deferred = q.defer();
+                    rootScope = _$rootScope_;
+                    scope = rootScope.$new();
 
+                    httpBackend.expectGET(REST_URL + '/orgs/x-formation/repos').respond(200);
+                    httpBackend.expectGET(REST_URL + '/repos/x-formation/pulsekit/contributors').respond(200);
+
+                    companyName = 'x-formation';
+                    repos = [
+                        {name: "pulsekit"},
+                        {name: "schemagen"}
+                    ]
                 }
             ));
-
-            afterEach(function () {
-                httpBackend.verifyNoOutstandingExpectation();
-                httpBackend.verifyNoOutstandingRequest();
-            });
 
             it('RepoService should be initialized', function () {
                 expect(RepoService).toBeDefined();
@@ -42,39 +47,23 @@
 
             it('should have sent a GET request to the getRepositories with success result', function () {
 
-                var returnData = {};
-
-                httpBackend.expectGET(REST_URL + '/orgs/x-formation/repos').respond(200, returnData);
-                //httpBackend.expectGET(REST_URL + '/repos/x-formation/' + returnData.name + '/contributors').respond(200, returnData);
-
-                var returnedPromise = RepoService.getRepositories();
-
                 var result;
-                returnedPromise.then(function (response) {
-                    result = response;
-                });
+
+                spyOn(_, 'each').and.callFake(
+                    function () {
+                        return repos;
+                    });
+
+
+                RepoService.getRepositories(companyName)
+                    .then(function (response) {
+                        result = response;
+
+                        RepoService.getContributors(response[0].name, companyName);
+                    });
 
                 httpBackend.flush();
 
-                expect(result).toEqual(returnData);
-            });
-
-            it('should have sent a GET request to the getRepositories with error result', function () {
-
-                var returnData = {error: 'Error 500!'};
-
-                httpBackend.expectGET(REST_URL + '/orgs/x-formation/repos').respond(500, returnData);
-
-                var returnedPromise = RepoService.getRepositories();
-
-                var result;
-                returnedPromise.then(function (response) {
-                    result = response;
-                });
-
-                httpBackend.flush();
-
-                expect(result).toEqual(returnData);
             });
 
         });

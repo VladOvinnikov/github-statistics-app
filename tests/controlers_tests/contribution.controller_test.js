@@ -35,7 +35,7 @@
                     q = _$q_;
                     deferred = q.defer();
 
-                    stateParams = {name: 'repoName'};
+                    stateParams = {repo: 'pulsekit', org: "x-formation"};
 
                     spyOn(RepoService, 'getContributors').and.returnValue(deferred.promise);
 
@@ -64,9 +64,14 @@
                 expect(scope.order).toBe('-contributions');
             });
 
-            it('$scope.repoName should to be defined and equal "-contributions"', function () {
+            it('$scope.repoName should to be defined and equal "pulsekit"', function () {
                 expect(scope.repoName).toBeDefined();
-                expect(scope.repoName).toBe('repoName');
+                expect(scope.repoName).toBe(stateParams.repo);
+            });
+
+            it('$scope.companyName should to be defined and equal "x-formation"', function () {
+                expect(scope.companyName).toBeDefined();
+                expect(scope.companyName).toBe(stateParams.org);
             });
 
             it('RepoService getContributors() should to be defined', function () {

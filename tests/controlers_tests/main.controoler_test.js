@@ -55,6 +55,11 @@
                 expect(scope.order).toBe('-forks');
             });
 
+            it('$scope.companyName should to be defined and equal "x-formation"', function () {
+                expect(scope.companyName).toBeDefined();
+                expect(scope.companyName).toBe('x-formation');
+            });
+
             it('RepoService getRepositories() should to be defined', function () {
                 expect(RepoService.getRepositories().then).toBeDefined();
             });
