@@ -52,8 +52,6 @@
                 var result;
                 returnedPromise.then(function (response) {
                     result = response;
-
-
                 });
 
                 httpBackend.flush();
