@@ -14,14 +14,12 @@
 
         init();
 
-
         function init() {
             $scope.contributors = null;
             $scope.order = '-contributions';
-            $scope.companyName = $stateParams.org;
             $scope.repoName = $stateParams.name;
 
-            RepoService.getContributors($scope.companyName, $scope.repoName)
+            RepoService.getContributors($scope.repoName)
                 .then(function (data) {
 
                     $scope.contributors = data;

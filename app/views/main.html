@@ -24,7 +24,7 @@
         </thead>
 
         <tr ng-repeat="repo in repositories | orderBy: order"
-            ui-sref="contribution({repo: companyName, name: repo.name})">
+            ui-sref="contribution({name: repo.name})">
             <td>{{repo.name}}</td>
             <td class="centered">{{repo.forks_count}}</td>
             <td class="centered">{{repo.contribution.length}}</td>

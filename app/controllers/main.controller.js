@@ -18,7 +18,7 @@
             $scope.repositories = null;
             $scope.order = '-forks';
 
-            RepoService.getRepositories($scope.companyName)
+            RepoService.getRepositories()
                 .then(function (data) {
                     console.log(data);
                     $scope.repositories = data;
