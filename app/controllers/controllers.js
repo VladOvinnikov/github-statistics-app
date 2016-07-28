@@ -6,7 +6,8 @@
 
     angular.module('githubStatisticsApp.controllers', [
 
-        'githubStatisticsApp.main.controller'
+        'githubStatisticsApp.main.controller',
+        'githubStatisticsApp.contribution.controller'
 
     ]);
 

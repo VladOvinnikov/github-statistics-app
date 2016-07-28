@@ -28,9 +28,6 @@
                     q = _$q_;
                     deferred = q.defer();
 
-
-                    //httpBackend.whenPOST(REST_URL + '/orgs/x-formation/repos')
-                    //    .respond(200, {name: 'Vlad', email: 'sdsd', success: true});
                 }
             ));
 
@@ -43,17 +40,20 @@
                 expect(RepoService).toBeDefined();
             });
 
-            it('should have sent a GET request to the getRepositories with success result', function() {
+            it('should have sent a GET request to the getRepositories with success result', function () {
 
-                var returnData = {name: 'saslauthd'};
+                var returnData = {};
 
                 httpBackend.expectGET(REST_URL + '/orgs/x-formation/repos').respond(200, returnData);
+                //httpBackend.expectGET(REST_URL + '/repos/x-formation/' + returnData.name + '/contributors').respond(200, returnData);
 
                 var returnedPromise = RepoService.getRepositories();
 
                 var result;
                 returnedPromise.then(function (response) {
                     result = response;
+
+
                 });
 
                 httpBackend.flush();
@@ -61,7 +61,7 @@
                 expect(result).toEqual(returnData);
             });
 
-            it('should have sent a GET request to the getRepositories with error result', function() {
+            it('should have sent a GET request to the getRepositories with error result', function () {
 
                 var returnData = {error: 'Error 500!'};
 

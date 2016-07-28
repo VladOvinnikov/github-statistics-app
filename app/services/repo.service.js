@@ -14,19 +14,18 @@
 
         return {
             getRepositories: getRepositories,
-            getContributions: getContributions
+            getContributors: getContributors
         };
 
-        function getRepositories() {
+        function getRepositories(companyName) {
             return $http.get(REST_URL + '/orgs/x-formation/repos')
                 .then(function (res) {
 
-                    return addContributionsToRepo(res.data);
+                    return addContributionsToRepo(res.data, companyName);
 
                 }, function (error) {
 
                     return error.data;
-
                 })
                 .finally(function () {
                     $log.info('Request getRepositories finished at:', new Date())
@@ -34,7 +33,7 @@
             );
         }
 
-        function getContributions(name) {
+        function getContributors(name) {
             return $http.get(REST_URL + '/repos/x-formation/' + name + '/contributors')
                 .then(function (res) {
 
@@ -42,20 +41,18 @@
                 }, function (error) {
 
                     return error.data;
-
                 })
                 .finally(function () {
-                    $log.info('Request getContributions finished at:', new Date())
+                    $log.info('Request getContributors finished at:', new Date())
                 }
             );
         }
 
         function addContributionsToRepo(array) {
-            var arrayWithContributions = [];
 
             _.each(array, function (repo) {
 
-                getContributions(repo.name)
+                getContributors(repo.name)
                     .then(function (data) {
 
                         repo.contribution = data;

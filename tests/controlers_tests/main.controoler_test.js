@@ -16,16 +16,15 @@
 
         describe('MainCtrl - ', function () {
 
-            var ctrl, scope, rootScope, log, RepoService, httpBackend, REST_URL, q, deferred;
+            var ctrl, scope, rootScope, log, RepoService, REST_URL, q, deferred;
 
             beforeEach(inject(
-                function (_$controller_, _$rootScope_, _$log_, _RepoService_, _$httpBackend_, _REST_URL_, _$q_) {
+                function (_$controller_, _$rootScope_, _$log_, _RepoService_, _REST_URL_, _$q_) {
 
                     rootScope = _$rootScope_;
                     scope = rootScope.$new();
                     log = _$log_;
                     RepoService = _RepoService_;
-                    httpBackend = _$httpBackend_;
                     REST_URL = _REST_URL_;
                     q = _$q_;
                     deferred = q.defer();
@@ -51,6 +50,10 @@
                 expect(scope.repositories).toBeNull();
             });
 
+            it('$scope.order should to be defined and equal "-forks"', function () {
+                expect(scope.order).toBeDefined();
+                expect(scope.order).toBe('-forks');
+            });
 
             it('RepoService getRepositories() should to be defined', function () {
                 expect(RepoService.getRepositories().then).toBeDefined();

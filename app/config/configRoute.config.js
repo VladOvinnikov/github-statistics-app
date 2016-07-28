@@ -15,13 +15,14 @@
             // Main route
             .state('home', {
                 url: '/',
-                views: {
-
-                    '': {
-                        templateUrl: '../views/main.html',
-                        controller: 'MainCtrl'
-                    }
-                }
+                templateUrl: '../views/main.html',
+                controller: 'MainCtrl'
+            })
+            // Contribution detail page
+            .state('contribution', {
+                url: '/contribution/:name',
+                templateUrl: '../views/contribution.html',
+                controller: 'ContributionCtrl'
             })
         ;
 

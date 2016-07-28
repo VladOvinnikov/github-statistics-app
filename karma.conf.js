@@ -9,6 +9,7 @@ module.exports = function (config) {
             'app/bower_components/jquery/dist/jquery.min.js',
             'app/bower_components/underscore/underscore-min.js',
             'app/bower_components/angular/angular.js',
+            'app/bower_components/angular-ui-router/release/angular-ui-router.min.js',
             'app/bower_components/angular-mocks/angular-mocks.js',
             'app/bower_components/angular-underscore-module/angular-underscore-module.js',
             'app/config/*.js',

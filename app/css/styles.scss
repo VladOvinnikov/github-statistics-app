@@ -34,7 +34,26 @@ table {
     & tr {
       & th {
         text-align: center;
-        cursor: pointer;
+        & span{
+          position: relative;
+          & span{
+            &.up,
+            &.down{
+              position: absolute;
+              right: -20px;
+              top:7px;
+              cursor: pointer;
+            }
+            &.up{
+
+              top:-3px;
+            }
+            &.down{
+
+              bottom: -7px;
+            }
+          }
+        }
       }
     }
   }

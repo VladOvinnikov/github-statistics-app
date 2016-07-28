@@ -4,12 +4,27 @@
         <thead>
         <tr>
             <th>Name</th>
-            <th>Forks</th>
-            <th>Contributions</th>
+            <th>
+                <span>Forks
+                    <span class="glyphicon glyphicon-menu-up up"
+                          ng-click="order = '-forks'"></span>
+                    <span class="glyphicon glyphicon-menu-down down"
+                          ng-click="order = 'forks'"></span>
+                </span>
+            </th>
+            <th>
+                <span>Contributions
+                    <span class="glyphicon glyphicon-menu-up up"
+                          ng-click="order = '-contribution'"></span>
+                    <span class="glyphicon glyphicon-menu-down down"
+                          ng-click="order = 'contribution'"></span>
+                </span>
+            </th>
         </tr>
         </thead>
 
-        <tr ng-repeat="repo in repositories | orderBy: 'forks'">
+        <tr ng-repeat="repo in repositories | orderBy: order"
+            ui-sref="contribution({repo: companyName, name: repo.name})">
             <td>{{repo.name}}</td>
             <td class="centered">{{repo.forks_count}}</td>
             <td class="centered">{{repo.contribution.length}}</td>
